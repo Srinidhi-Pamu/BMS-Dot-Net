@@ -23,7 +23,7 @@ namespace BMSwebapi.Controllers
                 string toemail = Email;
                 string subjectEmail = "Account Created ";
                 string comments = "<h3> Your Generated Account Number is: "  + AccountNumber + "</h3>";
-                MailMessage message = new MailMessage("pamusrini@gmail.com", toemail, subjectEmail, comments);
+                MailMessage message = new MailMessage("vvv@gmail.com", toemail, subjectEmail, comments);
                 message.IsBodyHtml = true;
 
 
@@ -33,7 +33,7 @@ namespace BMSwebapi.Controllers
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 //client.Credentials = CredentialCache.DefaultNetworkCredentials;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential("pamusrini@gmail.com", "sri10222");
+                client.Credentials = new System.Net.NetworkCredential("vvv@gmail.com", "mmmm");
                 client.Send(message);
                 message.Dispose();
                 client.Dispose();
