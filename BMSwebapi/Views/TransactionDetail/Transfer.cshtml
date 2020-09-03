@@ -1,0 +1,70 @@
+﻿@model BMSwebapi.Models.TransactionDetail
+@{
+    ViewBag.Title = "Transfer";
+    var AccountNumber1 = "sri";
+}
+
+    <head>
+        <style>
+            #leftbox {
+                float: left;
+                width: 50%;
+                height: 300px;
+            }
+
+            #rightbox {
+                float: right;
+                width: 50%;
+                height:300px;
+            }
+        </style>
+    </head>
+<h2>Transfer Money Here</h2><br />
+
+@using (Html.BeginForm("Transfer", "TransactionDetail", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div id="boxes">
+        <div id="rightbox">
+            <div class="col-md-12">
+                <a href="..\img\transfer11.jpg" class="thumbnail">
+                    <img src="..\img\transfer11.jpg "/>
+                </a>
+            </div>
+        </div>
+
+        @Html.AntiForgeryToken()
+        <div id="leftbox">
+            <div class="form-horizontal"></div>
+
+            @Html.HiddenFor(model => model.AccountNumber, new { @value = Session["AccountNumber"] })
+
+            <div class="form-group">
+                @Html.Label("Enter an AccountNumber", htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+
+            <div class="col-md-10">
+                @Html.Editor("YourItemName", new { htmlAttributes = new { @class = "form-control", @placeholder = "Add" } })
+                @Html.ValidationMessage(AccountNumber1, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @placeholder = "Add" } })
+                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+            </div><br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Transfer" class="btn btn-outline-success" />
+                </div>
+            </div>
+        </div>
+    </div><br />
+}
+<div>
+    <p><a>@Html.ActionLink("Back", "../Home/Redirect")</a><br />
+    <a>@Html.ActionLink("Logout", "../Home/Index")</a></p>
+</div>

@@ -1,0 +1,77 @@
+﻿@model BMSwebapi.Models.PassBook
+@{
+    ViewBag.Title = "Your Passbook Details";
+}
+<h2>Your Passbook Details</h2>
+<div>
+    <table id="t01">
+        <thead>
+        <th>Account Number</th>
+        <th>Amount</th>
+        <th>Time Of Transaction</th>
+        <th>Mode</th>
+        </thead>
+
+        @foreach (var item in ViewBag.userdetails)
+        {
+            <tr>
+                <td>
+                    @item.AccountNumber
+                </td>
+                <td>
+                    @item.Amount
+                </td>
+                <td>
+                    @item.TimeofTransaction
+                </td>
+                <td>
+                    @item.Mode
+                </td>
+
+            </tr>
+        }
+    </table>
+</div>
+<style>
+    table#t01 {
+        width: 100%;
+        background-color: #f1f1c1;
+    }
+
+        table#t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        table#t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        table#t01 th {
+            color: black;
+            background-color: cornflowerblue;
+        }
+
+    table, th, td {
+        border: 1px solid black;
+        color: blueviolet;
+        background-color: floralwhite;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+</style>
+<div>
+    <p><a>@Html.ActionLink("Back", "../Home/Redirect")</a><br />
+    <a>@Html.ActionLink("Logout", "../Home/Index")</a></p>
+</div>
